@@ -1,0 +1,17 @@
+{
+  "name": "assert-the-unexpected",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/assertTheUnexpected.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "unexpected": "^10.26.0"
+  },
+  "peerDependencies": {
+    "unexpected": "^10.26.0"
+  }
+}
