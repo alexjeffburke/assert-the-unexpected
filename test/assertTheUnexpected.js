@@ -34,5 +34,11 @@ describe('assertTheUnexpected', function () {
         assert.doesNotThrow(function () { throw new Error('boo'); });
       }, 'to error', 'Got unwanted exception..');
     });
+
+    it('', function () {
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); }, 'hoo');
+      }, 'to error', 'Got unwanted exception. hoo');
+    });
   });
 });
