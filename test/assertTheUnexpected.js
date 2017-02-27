@@ -27,4 +27,12 @@ describe('assertTheUnexpected', function () {
       }, 'not to error');
     });
   });
+
+  describe('doesNotThrow', function () {
+    it('', function () {
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); });
+      }, 'to error', 'Got unwanted exception..');
+    });
+  });
 });
