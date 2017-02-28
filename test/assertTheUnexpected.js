@@ -47,4 +47,24 @@ describe('assertTheUnexpected', function () {
       }, 'to error', 'boo');
     });
   });
+
+  describe('throws', function () {
+    it('should pass on seeing an exception', function () {
+      expect(function () {
+        assert.throws(function () { throw new Error('boo'); });
+      }, 'not to error');
+    });
+
+    it('should throw on a missing expection', function () {
+      expect(function () {
+        assert.throws(function () {});
+      }, 'to error', 'Missing expected exception..');
+    });
+
+    it('should throw the original error on regex mismatch', function () {
+      expect(function () {
+        assert.throws(function () { throw new Error('boo'); }, /hoo/);
+      }, 'to error', 'boo');
+    });
+  });
 });
