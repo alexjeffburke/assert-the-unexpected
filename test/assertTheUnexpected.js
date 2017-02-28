@@ -61,6 +61,18 @@ describe('assertTheUnexpected', function () {
       }, 'to error', 'Missing expected exception..');
     });
 
+    it('should throw and include the string constraint', function () {
+      expect(function () {
+        assert.throws(function () {}, 'hoo');
+      }, 'to error', 'Missing expected exception. hoo');
+    });
+
+    it('should throw the string constraint on string mismatch', function () {
+      expect(function () {
+        assert.throws(function () { new Error('boo'); }, 'hoo');
+      }, 'to error', 'Missing expected exception. hoo');
+    });
+
     it('should throw the original error on regex mismatch', function () {
       expect(function () {
         assert.throws(function () { throw new Error('boo'); }, /hoo/);
