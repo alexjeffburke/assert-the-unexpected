@@ -48,6 +48,22 @@ describe('assertTheUnexpected', function () {
     });
   });
 
+  describe('ifError', function () {
+    it('should pass on no error', function () {
+      expect(function () {
+        assert.ifError(null);
+      }, 'not to error');
+    });
+
+    it('should throw on an error', function () {
+      var theError = new Error();
+
+      expect(function () {
+        assert.ifError(theError);
+      }, 'to error');
+    });
+  });
+
   describe('throws', function () {
     it('should pass on seeing an exception', function () {
       expect(function () {
