@@ -29,19 +29,19 @@ describe('assertTheUnexpected', function () {
   });
 
   describe('doesNotThrow', function () {
-    it('', function () {
+    it('should throw on an unwanted exception', function () {
       expect(function () {
         assert.doesNotThrow(function () { throw new Error('boo'); });
       }, 'to error', 'Got unwanted exception..');
     });
 
-    it('', function () {
+    it('should include a string constaint on an unwanted exception', function () {
       expect(function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, 'hoo');
       }, 'to error', 'Got unwanted exception. hoo');
     });
 
-    it('', function () {
+    it('should throw the original error on regex mismatch', function () {
       expect(function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, /hoo/);
       }, 'to error', 'boo');
