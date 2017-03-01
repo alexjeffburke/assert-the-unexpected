@@ -1,12 +1,16 @@
 {
   "name": "assert-the-unexpected",
   "version": "0.0.1",
-  "description": "",
+  "description": "assert facade for Unexpected",
+  "author": "Alex J Burke <alex@alexjeffburke.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexjeffburke/assert-the-unexpected.git"
+  },
   "main": "lib/assertTheUnexpected.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
   "license": "BSD-3-Clause",
   "dependencies": {
     "unexpected": "^10.26.0"
