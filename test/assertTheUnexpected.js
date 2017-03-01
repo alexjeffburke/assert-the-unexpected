@@ -26,6 +26,42 @@ describe('assertTheUnexpected', function () {
         assert.deepEqual({ a: ['1'] }, { a: [1] });
       }, 'not to error');
     });
+
+    it('should compare date and array', function () {
+      expect(function () {
+        assert.deepEqual(new Date(), []);
+      }, 'not to error');
+    });
+
+    it('should compare date and object', function () {
+      expect(function () {
+        assert.deepEqual(new Date(), {});
+      }, 'not to error');
+    });
+
+    it('should loosely compare deep objects', function () {
+      var now = Date.now();
+      var lhs = {
+        a: 1,
+        b: {
+          foo: ['bar', 'baz'],
+          quuz: new Date(now),
+        },
+        c: '3'
+      };
+      var rhs =  {
+        a: '1',
+        b: {
+          foo: ['bar', 'baz'],
+          quuz: new Date(now)
+        },
+        c: 3
+      };
+
+      expect(function () {
+        assert.deepEqual(lhs, rhs);
+      }, 'not to error');
+    });
   });
 
   describe('doesNotThrow', function () {
