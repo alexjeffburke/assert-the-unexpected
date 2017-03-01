@@ -60,7 +60,7 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.ifError(theError);
-      }, 'to error');
+      }, 'to error', theError);
     });
   });
 
