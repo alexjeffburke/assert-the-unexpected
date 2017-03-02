@@ -71,7 +71,7 @@ describe('assertTheUnexpected', function () {
       }, 'to error', 'Got unwanted exception..');
     });
 
-    it('should include a string constaint on an unwanted exception', function () {
+    it('should throw and include user defined message', function () {
       expect(function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, 'hoo');
       }, 'to error', 'Got unwanted exception. hoo');
