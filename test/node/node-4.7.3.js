@@ -562,5 +562,3 @@ assert.throws(() => { throw new Error(); }, (err) => err instanceof Error);
 assert.throws(() => {
   assert.strictEqual('A'.repeat(1000), '');
 }, new RegExp(`^AssertionError: '${'A'.repeat(127)} === ''$`));
-
-console.log('All OK');
