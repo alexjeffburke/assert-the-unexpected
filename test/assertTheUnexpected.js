@@ -141,27 +141,41 @@ describe('assertTheUnexpected', function () {
       }, 'not to error');
     });
 
-    it('should throw on a missing expection', function () {
+    it('should throw on a missing exception', function () {
       expect(function () {
         assert.throws(function () {});
       }, 'to error', 'Missing expected exception..');
     });
 
-    it('should throw and include the string constraint', function () {
+    it('should throw and include user defined message', function () {
       expect(function () {
         assert.throws(function () {}, 'hoo');
       }, 'to error', 'Missing expected exception. hoo');
     });
 
-    it('should throw the string constraint on string mismatch', function () {
+    it('should throw on a missing exception and regex', function () {
       expect(function () {
-        assert.throws(function () { new Error('boo'); }, 'hoo');
-      }, 'to error', 'Missing expected exception. hoo');
+        assert.throws(function () {}, /hoo/);
+      }, 'to error', 'Missing expected exception..');
     });
+
+    it('should throw on missing exception with regex and message', function () {
+      var theMessage = 'ouch';
+
+      expect(function () {
+        assert.throws(function () {}, /hoo/, theMessage);
+      }, 'to error', 'Missing expected exception. ' + theMessage);
+    });
 
     it('should throw the original error on regex mismatch', function () {
       expect(function () {
         assert.throws(function () { throw new Error('boo'); }, /hoo/);
+      }, 'to error', 'boo');
+    });
+
+    it('should ignore a user supplied message on regex mismatch', function () {
+      expect(function () {
+        assert.throws(function () { throw new Error('boo'); }, /hoo/, 'ouch');
       }, 'to error', 'boo');
     });
   });
