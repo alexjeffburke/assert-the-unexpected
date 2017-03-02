@@ -2,6 +2,12 @@ var assert = require('../lib/assertTheUnexpected');
 var expect = require('unexpected');
 
 describe('assertTheUnexpected', function () {
+  function hasAssertionErrorMessage(err, message) {
+    message = 'AssertionError: ' + message;
+
+    expect(err.toString(), 'to equal', message);
+  }
+
   describe('deepEqual', function () {
     it('should compare objects with loosely equal property (lhs)', function () {
       expect(function () {
@@ -61,6 +67,16 @@ describe('assertTheUnexpected', function () {
       expect(function () {
         assert.deepEqual(lhs, rhs);
       }, 'not to error');
+    });
+
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.deepEqual([0], [true], theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
     });
   });
 
@@ -138,6 +154,16 @@ describe('assertTheUnexpected', function () {
         assert.equal(null, null);
       }, 'not to error');
     });
+
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.equal('a', 'b', theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
   });
 
   describe('ifError', function () {
@@ -154,6 +180,15 @@ describe('assertTheUnexpected', function () {
         assert.ifError(theError);
       }, 'to error', theError);
     });
+
+    it('should ignore a user supplied message', function () {
+      var theError = new Error();
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.ifError(theError, theMessage);
+      }, 'to error', theError);
+    });
   });
 
   describe('notEqual', function () {
@@ -161,6 +196,82 @@ describe('assertTheUnexpected', function () {
       expect(function () {
         assert.notEqual(0, '0');
       }, 'to error');
+    });
+
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.notEqual(0, '0', theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
+  });
+
+  describe('notDeepEqual', function () {
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.notDeepEqual([0], ['0'], theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
+  });
+
+  describe('notDeepStrictEqual', function () {
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.notDeepStrictEqual([0], [0], theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
+  });
+
+  describe('notStrictEqual', function () {
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.notStrictEqual(0, 0, theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
+  });
+
+  describe('ok', function () {
+    it('should throw on falsy value', function () {
+      expect(function () {
+        assert.ok(false);
+      }, 'to error', /expected/);
+    });
+
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.ok(false, theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
+    });
+  });
+
+  describe('strictEqual', function () {
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.strictEqual('boo', 'hoo', theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
     });
   });
 
@@ -207,6 +318,24 @@ describe('assertTheUnexpected', function () {
       expect(function () {
         assert.throws(function () { throw new Error('boo'); }, /hoo/, 'ouch');
       }, 'to error', 'boo');
+    });
+  });
+
+  describe('when used a plain function', function () {
+    it('should throw the', function () {
+      expect(function () {
+        assert.ok(false);
+      }, 'to error', /expected/);
+    });
+
+    it('should respect a user supplied message', function () {
+      var theMessage = 'oh dear';
+
+      expect(function () {
+        assert.ok(false, theMessage);
+      }, 'to error', function (e) {
+        hasAssertionErrorMessage(e, theMessage);
+      });
     });
   });
 });
