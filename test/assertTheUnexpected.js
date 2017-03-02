@@ -84,6 +84,32 @@ describe('assertTheUnexpected', function () {
     });
   });
 
+  describe('equal', function () {
+    it('should compare 0 and "0"', function () {
+      expect(function () {
+        assert.equal(0, '0');
+      }, 'not to error');
+    });
+
+    it('should compare 0 and false', function () {
+      expect(function () {
+        assert.equal(1, true);
+      }, 'not to error');
+    });
+
+    it('should compare 1 and true', function () {
+      expect(function () {
+        assert.equal(1, true);
+      }, 'not to error');
+    });
+
+    it('should compare null with itself', function () {
+      expect(function () {
+        assert.equal(null, null);
+      }, 'not to error');
+    });
+  });
+
   describe('ifError', function () {
     it('should pass on no error', function () {
       expect(function () {
@@ -97,6 +123,14 @@ describe('assertTheUnexpected', function () {
       expect(function () {
         assert.ifError(theError);
       }, 'to error', theError);
+    });
+  });
+
+  describe('notEqual', function () {
+    it('should throw on matching number and string comparison', function () {
+      expect(function () {
+        assert.notEqual(0, '0');
+      }, 'to error');
     });
   });
 
