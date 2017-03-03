@@ -104,6 +104,14 @@ describe('assertTheUnexpected', function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, assert.AssertionError);
       }, 'to error', 'boo');
     });
+
+    it('should throw an assertion error on Error type match', function () {
+      var theMessage = 'ouch';
+
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); }, Error, theMessage);
+      }, 'to error', 'Got unwanted exception (Error). ' + theMessage);
+    });
   });
 
   describe('equal', function () {
