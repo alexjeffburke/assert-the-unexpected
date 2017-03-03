@@ -82,6 +82,14 @@ describe('assertTheUnexpected', function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, /hoo/);
       }, 'to error', 'boo');
     });
+
+    it('should respect a user defined message on regex mismatch', function () {
+      var theMessage = 'ouch';
+
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); }, /hoo/, theMessage);
+      }, 'to error', 'Got unwanted exception. ' + theMessage);
+    });
   });
 
   describe('equal', function () {
