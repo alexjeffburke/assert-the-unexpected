@@ -90,6 +90,20 @@ describe('assertTheUnexpected', function () {
         assert.doesNotThrow(function () { throw new Error('boo'); }, /hoo/, theMessage);
       }, 'to error', 'Got unwanted exception. ' + theMessage);
     });
+
+    it('should throw an assertion error on Error type match', function () {
+      var theMessage = 'ouch';
+
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); }, Error);
+      }, 'to error', 'Got unwanted exception (Error)..');
+    });
+
+    it('should throw the original error on Error type mismatch', function () {
+      expect(function () {
+        assert.doesNotThrow(function () { throw new Error('boo'); }, assert.AssertionError);
+      }, 'to error', 'boo');
+    });
   });
 
   describe('equal', function () {
