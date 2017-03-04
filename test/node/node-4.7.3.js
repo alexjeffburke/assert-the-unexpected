@@ -1,6 +1,7 @@
 'use strict';
 var assert = require('assert');
 var a = require('../../lib/assertTheUnexpected');
+var semver = require('semver');
 
 function makeBlock(f) {
   var args = Array.prototype.slice.call(arguments, 1);
@@ -529,7 +530,14 @@ function testBlockTypeError(method, block) {
     method(block);
     threw = false;
   } catch (e) {
-    assert.equal(e.toString(), 'TypeError: block must be a function');
+    var expectedMessage;
+    if (semver.gte(process.version, '6.0.0')) {
+      expectedMessage = 'TypeError: "block" argument must be a function';
+    } else {
+      expectedMessage = 'TypeError: block must be a function';
+    }
+
+    assert.equal(e.toString(), expectedMessage);
   }
 
   assert.ok(threw);
