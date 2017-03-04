@@ -1,5 +1,8 @@
 # assert-the-unexpected
 
+[![NPM version](https://badge.fury.io/js/assert-the-unexpected.svg)](http://badge.fury.io/js/assert-the-unexpected)
+[![Build Status](https://travis-ci.org/alexjeffburke/assert-the-unexpected.svg?branch=master)](https://travis-ci.org/alexjeffburke/assert-the-unexpected)
+
 This implements the node core `assert` API as an Unexpected facade.
 
 A great deal of emphasis was placed on compatibility and this module aims to

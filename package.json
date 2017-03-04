@@ -17,5 +17,9 @@
   },
   "peerDependencies": {
     "unexpected": "^10.26.0"
+  },
+  "devDependencies": {
+    "mocha": "~3.2.0",
+    "semver": "~5.3.0"
   }
 }
