@@ -1,11 +1,22 @@
 var assert = require('../lib/assertTheUnexpected');
 var expect = require('unexpected');
+var semver = require('semver');
+
+var IS_NODE_6_OR_BELOW = semver.satisfies(process.version.substring(1), '<=6');
 
 describe('assertTheUnexpected', function () {
   function hasAssertionErrorMessage(err, message) {
-    message = 'AssertionError: ' + message;
+    var assertMessage = 'AssertionError';
 
-    expect(err.toString(), 'to equal', message);
+    if (!IS_NODE_6_OR_BELOW) {
+      assertMessage += ' [ERR_ASSERTION]: ';
+    } else {
+      assertMessage += ': ';
+    }
+
+    assertMessage += message;
+
+    expect(err.toString(), 'to equal', assertMessage);
   }
 
   describe('deepEqual', function () {

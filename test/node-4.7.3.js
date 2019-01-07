@@ -1,8 +1,8 @@
 var semver = require('semver');
 
 describe('node', function () {
-  function itByVersion(version, description, block) {
-    var isMinimumVersion = semver.gte(process.version, version);
+  function itByVersion(range, description, block) {
+    var isMinimumVersion = semver.satisfies(process.version, range);
 
     if (isMinimumVersion) {
       return it(description, block);
@@ -11,7 +11,7 @@ describe('node', function () {
     }
   }
 
-  itByVersion('4.0.0', 'should pass node 4.7.3 tests', function () {
+  itByVersion('<=6', 'should pass node 4.7.3 tests', function () {
     require('./node/node-4.7.3');
   });
 });
