@@ -9,6 +9,7 @@
   },
   "main": "lib/assertTheUnexpected.js",
   "scripts": {
+    "coverage": "nyc --reporter lcov --reporter text mocha",
     "test": "mocha"
   },
   "license": "BSD-3-Clause",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "mocha": "^3.2.0",
+    "nyc": "^11.9.0",
     "semver": "^5.3.0"
   }
 }
