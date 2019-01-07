@@ -325,7 +325,7 @@ describe('assertTheUnexpected', function () {
     it('should throw the', function () {
       expect(function () {
         assert.ok(false);
-      }, 'to error', /expected/);
+      }, 'to throw', expect.it('to be a', assert.AssertionError).and('to have message', /expected/));
     });
 
     it('should respect a user supplied message', function () {
