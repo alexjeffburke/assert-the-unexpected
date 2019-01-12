@@ -4,9 +4,9 @@
 [![Build Status](https://travis-ci.org/alexjeffburke/assert-the-unexpected.svg?branch=master)](https://travis-ci.org/alexjeffburke/assert-the-unexpected)
 [![Coverage Status](https://img.shields.io/coveralls/alexjeffburke/assert-the-unexpected.svg?style=flat)](https://coveralls.io/r/alexjeffburke/assert-the-unexpected?branch=master)
 
-This implements the node core `assert` API as an Unexpected facade.
+This library implements the node core `assert` API as an Unexpected facade.
 
-# Compatibility
+## Compatibility
 
 A great deal of emphasis was placed on compatibility and this module aims to
 be a drop-in replacement. It was developed against the node core test suite
