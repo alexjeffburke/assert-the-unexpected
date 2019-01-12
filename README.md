@@ -2,6 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/assert-the-unexpected.svg)](http://badge.fury.io/js/assert-the-unexpected)
 [![Build Status](https://travis-ci.org/alexjeffburke/assert-the-unexpected.svg?branch=master)](https://travis-ci.org/alexjeffburke/assert-the-unexpected)
+[![Coverage Status](https://img.shields.io/coveralls/alexjeffburke/assert-the-unexpected.svg?style=flat)](https://coveralls.io/r/alexjeffburke/assert-the-unexpected?branch=master)
 
 This implements the node core `assert` API as an Unexpected facade.
 
