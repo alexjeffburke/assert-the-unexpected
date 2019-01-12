@@ -14,4 +14,8 @@ describe('node', function () {
   itByVersion('<=6', 'should pass node 4.7.3 tests', function () {
     require('./node/node-4.7.3');
   });
+
+  itByVersion('6', 'should pass node 6.15.1 tests', function () {
+    require('./node/node-6.15.1');
+  });
 });
