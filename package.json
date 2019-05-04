@@ -1,6 +1,6 @@
 {
   "name": "assert-the-unexpected",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "assert facade for Unexpected",
   "author": "Alex J Burke <alex@alexjeffburke.com>",
   "repository": {
