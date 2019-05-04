@@ -85,9 +85,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.deepEqual([0], [true], theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -171,9 +171,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.equal('a', 'b', theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -214,9 +214,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.notEqual(0, '0', theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -226,9 +226,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.notDeepEqual([0], ['0'], theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -238,9 +238,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.notDeepStrictEqual([0], [0], theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -250,9 +250,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.notStrictEqual(0, 0, theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -268,9 +268,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.ok(false, theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -280,9 +280,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.strictEqual('boo', 'hoo', theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 
@@ -344,9 +344,9 @@ describe('assertTheUnexpected', function () {
 
       expect(function () {
         assert.ok(false, theMessage);
-      }, 'to error', function (e) {
+      }, 'to error', expect.it(function (e) {
         hasAssertionErrorMessage(e, theMessage);
-      });
+      }));
     });
   });
 });

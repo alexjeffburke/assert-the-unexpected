@@ -14,10 +14,10 @@
   },
   "license": "BSD-3-Clause",
   "dependencies": {
-    "unexpected": "^10.26.0"
+    "unexpected": "^10.37.7"
   },
   "peerDependencies": {
-    "unexpected": "^10.26.0"
+    "unexpected": "^10.37.7"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
